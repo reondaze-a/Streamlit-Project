@@ -9,7 +9,10 @@ st.markdown("This app is used to calculate the stats of a pokemon at a certain l
             "them to one another. A radar plot will be shown to visualize the numbers and have a better "
             "perspective of it.")
 
-level = st.slider(1, 100, 5)
+level = st.slider(1, 100)
 start_button = st.button('Calculate')
 
-#if start_button:
+if start_button:
+    st.write('Calculating the stats')
+
+st.write('Application in progress.')
