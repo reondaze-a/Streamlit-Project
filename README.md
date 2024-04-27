@@ -1,4 +1,4 @@
-# TripleTen-SDA-Project
+# Streamlit Project
 Software Development Tools Project: Pokemon Stats Graph
 
 Hello! This web app was built to see the correlation between Pokemon stats up to Generation 6, based on the types.
