@@ -1,18 +1,50 @@
-import streamlit as st
 import pandas as pd
+import streamlit as st
+import plotly.graph_objs as go
 import plotly.express as px
 import pkmn_func as pf
+import numpy as np
 
-st.header('Calculate pokemon stats')
+st.title('Pokemon stats Plots')
+st.write("This web-app will show the correlation between the chosen stats of selected types over Generations.")
 
-st.markdown("This app is used to calculate the stats of a pokemon at a certain level, as well as compare "
-            "them to one another. A radar plot will be shown to visualize the numbers and have a better "
-            "perspective of it.")
+type_list1 = pf.data['Type 1'].unique()
+type_list2 = np.insert(type_list1, 0,  'None')
 
-level = st.slider(1, 100)
-start_button = st.button('Calculate')
+type = st.selectbox("Choose Type", type_list1)
+type2 = st.selectbox("Choose 2nd Type", type_list2)
 
-if start_button:
-    st.write('Calculating the stats')
 
-st.write('Application in progress.')
+st.subheader("Scatterplot")
+
+stat_x = st.selectbox("Choose stat for X-axis", ['Attack', 'Defense', 'Sp. Atk', 'Sp. Def', 'Speed'])
+stat_y = st.selectbox("Choose stat for Y-axis", ['Attack', 'Defense', 'Sp. Atk', 'Sp. Def', 'Speed'])
+stat_size = st.selectbox("Choose stat for Size of plot", ['Attack', 'Defense', 'Sp. Atk', 'Sp. Def', 'Speed'])
+
+start_scatter = st.button("Create Scatterplot")
+
+st.subheader("Histogram")
+
+compared_stat = st.selectbox("Choose stats", ['Attack', 'Defense', 'Sp. Atk', 'Sp. Def', 'Speed'])
+
+start_hist = st.button("Create Histogram")
+
+if start_scatter:
+    if type2 == 'None':
+        st.subheader(f"{type}")
+        st.plotly_chart(pf.scatterplot_stats(type, x_axis=stat_x, y_axis=stat_y, size=stat_size))
+
+    else:
+        st.subheader(f"{type}")
+        st.plotly_chart(pf.scatterplot_stats(type, x_axis=stat_x, y_axis=stat_y, size=stat_size))
+        st.subheader(f"{type2}")
+        st.plotly_chart(pf.scatterplot_stats(type2, x_axis=stat_x, y_axis=stat_y, size=stat_size))
+
+if start_hist:
+    if type2 == 'None':
+        st.subheader(f"{type}")
+        st.plotly_chart(pf.hist_stats_ind(type, compared_stat))
+
+    else:
+        st.subheader(f"{type} vs {type2}")
+        st.plotly_chart(pf.hist_stats_mul(type, type2, compared_stat))
