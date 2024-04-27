@@ -18,3 +18,5 @@ and direct yourself to the repository's directory.  Go to `.streamlit` directory
 
 **Must have streamlit installed on your machine!**
 If you don't you can run the command `pip install streamlit`.
+
+URL to web-app : https://tripleten-sda-project.onrender.com/
