@@ -34,6 +34,7 @@ total_evs = ev_hp + ev_atk + ev_def + ev_spatk + ev_spdef + ev_speed
 
 level = st.slider('Pokemon level', 1, 100, 5)
 
+# Making sure the EVs are the appropriate amount
 if total_evs <= 510:
     start_button = st.button('Calculate')
 
@@ -70,6 +71,7 @@ if total_evs <= 510:
         )
 
 
+# If EVs are above 510, disable calculator
 elif total_evs > 510:
     st.write('Total EVs must not exceed 510.')
     start_button = st.button('Calculate', disabled=True)

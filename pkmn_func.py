@@ -223,12 +223,14 @@ def scatterplot_stats(type, x_axis, y_axis, size):
 
     return fig
 
+# Plots histogram for individual input
 def hist_stats_ind(type, stat):
     typedata = data[(data['Type 1'] == type) | (data['Type 2'] == type)]
     fig = px.histogram(typedata[stat])
 
     return fig
 
+# Plots histogram for multiple inputs
 def hist_stats_mul(type, type_2, stat):
     typedata = data[(data['Type 1'] == type) | (data['Type 2'] == type)]
     typedata2 = data[(data['Type 1'] == type_2) | (data['Type 2'] == type_2)]
