@@ -14,7 +14,7 @@ The libraries I've used include:
 And I also used a self-made module: pkmn_func.py
 
 To launch it on your local machine, pull the repository to your local machine and then use a command shell(CMD, Git Bash, PowerShell)
-and direct yourself to the repository's directory, then enter the command: `streamlit run app.py` or `streamlit run app2.py`
+and direct yourself to the repository's directory.  Go to `.streamlit` directory and disable or delete the `config.toml` file. Then in the command shell, enter the command: `streamlit run app.py` or `streamlit run app2.py`.
 
 **Must have streamlit installed on your machine!**
-If you don't you can run the command `pip install streamlit`
+If you don't you can run the command `pip install streamlit`.
