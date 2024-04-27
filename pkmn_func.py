@@ -226,7 +226,7 @@ def scatterplot_stats(type, x_axis, y_axis, size):
 # Plots histogram for individual input
 def hist_stats_ind(type, stat):
     typedata = data[(data['Type 1'] == type) | (data['Type 2'] == type)]
-    fig = px.histogram(typedata[stat])
+    fig = px.histogram(typedata[stat]).update_layout(yaxis_title="Number of Pokemons", xaxis_title=f"{stat} stat")
 
     return fig
 
@@ -239,6 +239,6 @@ def hist_stats_mul(type, type_2, stat):
     typedata2 = typedata2.assign(**{"Type 1": type_2})
     concat = pd.concat([typedata, typedata2])
 
-    fig = px.histogram(concat, x=stat, color='Type 1')
+    fig = px.histogram(concat, x=stat, color='Type 1').update_layout(yaxis_title="Number of Pokemons", xaxis_title=f"{stat} stat")
 
     return fig
